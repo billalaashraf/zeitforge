@@ -454,7 +454,7 @@ function WorkSection() {
       <div className="sec-hd rv">
         <div className="sec-hd__l">
           <span className="eyebrow"><span className="pip" /> 04 · RECENT PROJECTS</span>
-          <h2 className="h-2">Products we<br />didn&apos;t just<br /><span className="serif">design.</span> We shipped.</h2>
+          <h2 className="h-2">Products we didn&apos;t<br />just design.<br />We <span className="serif">shipped.</span></h2>
         </div>
         <div className="sec-hd__gap" />
         <div className="sec-hd__r"><p>Four engagements from the last twenty-four months. Names changed where the work is still in stealth.</p></div>

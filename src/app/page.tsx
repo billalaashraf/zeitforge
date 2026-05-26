@@ -381,7 +381,7 @@ function AboutSection() {
           <p className="text-body">Our work is taken on referral. We embed alongside in-house teams, ship into the same codebase under the same standards, and exit with a runbook, a paved path, and operators trained to run the product for the next order of magnitude.</p>
           <div style={{display:"flex",gap:12,alignItems:"center",marginTop:18}}>
             <button className="btn">Meet the studio <span className="arr">↗</span></button>
-            <span className="eyebrow">14 yrs · 3 cities · 24 operators</span>
+            <span className="eyebrow">14 yrs · 24 operators · remote-first</span>
           </div>
         </div>
         <div className="about__stats about__stats--3 rv d2">

@@ -370,8 +370,6 @@ function AboutSection() {
           <span className="eyebrow"><span className="pip" /> 02 · ABOUT OUR STUDIO</span>
           <h2 className="h-2">Designing scalable<br />SaaS products that<br />help companies <span className="serif">stand out.</span></h2>
         </div>
-        <div className="sec-hd__gap" />
-        <div className="sec-hd__r"><p>Closed engagements, embedded teams, ten-year operating discipline.</p></div>
       </div>
       <div className="about__grid">
         <div className="about__copy rv d1">

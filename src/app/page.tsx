@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 
 function MarkBrand({ size = 22 }: { size?: number }) {
   const id = `zf-cut-${size}`;
@@ -288,7 +288,7 @@ function HeroSection() {
         <div className="hero__col-l">
           <div className="hero__cap">
             <span className="pill"><span className="dot" /> DESIGN &amp; DEVELOPMENT STUDIO</span>
-            <span className="eyebrow">London · Berlin · NYC</span>
+            <span className="eyebrow">Remote-first · Global</span>
           </div>
           <h1 className="hero__h1 rv">Partner with a<br />product studio<br />built for SaaS <em>growth.</em></h1>
           <p className="hero__sub rv d1">We help SaaS companies design, build, and scale digital products with sharp strategy, clean interfaces, automation, and reliable development.</p>
@@ -326,11 +326,11 @@ function HeroSection() {
               <div className="hd"><span className="tag">SAVED · 1,420 h / mo</span><span className="tag">RUNS · 41K</span></div>
             </div>
             <div className="hv-card hv-code">
-              <div className="ln"><span className="n">01</span><span><span className="c">// zf · forge pipeline</span></span></div>
+              <div className="ln"><span className="n">01</span><span><span className="c">{"// zf · forge pipeline"}</span></span></div>
               <div className="ln"><span className="n">02</span><span><span className="k">export const</span> forge = <span className="k">async</span> ({"{"}product{"}"}) <span className="k">{"=>"}</span> {"{"}</span></div>
               <div className="ln"><span className="n">03</span><span>{"  "}<span className="k">await</span> design.system(product, <span className="s">&quot;v2&quot;</span>);</span></div>
               <div className="ln"><span className="n">04</span><span>{"  "}<span className="k">await</span> build.platform({"{"} flags: [<span className="s">&quot;growth&quot;</span>] {"}"});</span></div>
-              <div className="ln"><span className="n">05</span><span>{"  "}<span className="k">return</span> launch();{"   "}<span className="c">// ↳ 8w mvp</span></span></div>
+              <div className="ln"><span className="n">05</span><span>{"  "}<span className="k">return</span> launch();{"   "}<span className="c">{"// ↳ 8w mvp"}</span></span></div>
               <div className="ln"><span className="n">06</span><span>{"}"};  </span></div>
             </div>
             <div className="hv-floater"><span className="dot live" /><span>BUILD · ZF-OS 7.2.4</span></div>
@@ -490,95 +490,12 @@ function WorkSection() {
   );
 }
 
-function PricingSection() {
-  const plans = [
-    {tag:"01 · STARTER",name:"Sprint",sub:"Fixed-scope discovery + design.",price:"$24k",cadence:"flat · 3 wks",feats:["Product audit + operating brief","Interface & system design","Roadmap with cost envelope","One senior lead, one designer"],cta:"Start a Sprint",featured:false},
-    {tag:"02 · MOST COMMON",name:"MVP",sub:"From whiteboard to launched product.",price:"$98k",cadence:"fixed · 8 wks",feats:["Full design + development","Production deployment + analytics","Embedded team of three seniors","30-day post-launch parallel"],cta:"Build an MVP",featured:true},
-    {tag:"03 · PLATFORM",name:"Scale",sub:"Quarterly engagement for growth-stage SaaS.",price:"From $42k",cadence:"monthly · 3–12 mo",feats:["Embedded product + platform team","Automation & AI workflows","Quarterly operating reviews","Runbook + handoff at exit"],cta:"Talk to us",featured:false},
-  ];
-  return (
-    <section className="sec s-wrap" id="pricing">
-      <div className="sec-hd rv">
-        <div className="sec-hd__l">
-          <span className="eyebrow"><span className="pip" /> 05 · PRICING</span>
-          <h2 className="h-2">Fixed-fee phases.<br />No <span className="serif">hourly billing.</span></h2>
-        </div>
-        <div />
-        <div className="sec-hd__r"><p>Three engagement shapes. Most clients start with a Sprint and convert into an MVP or Scale plan from there.</p></div>
-      </div>
-      <div className="price__grid rv d1">
-        {plans.map(p => (
-          <div key={p.name} className={`price__card ${p.featured?"is-feat":""}`}>
-            <div className="price__head">
-              <span className="price__tag">{p.tag}</span>
-              {p.featured && <span className="price__badge">RECOMMENDED</span>}
-            </div>
-            <h3 className="price__name">{p.name}<span className="serif">.</span></h3>
-            <p className="price__sub">{p.sub}</p>
-            <div className="price__amt"><span className="price__v">{p.price}</span><span className="price__c">{p.cadence}</span></div>
-            <ul className="price__feats">
-              {p.feats.map(f => (
-                <li key={f}>
-                  <span className="price__chk">
-                    <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
-                      <path d="M2 5.5 L4.5 8 L9 3" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </span>
-                  <span>{f}</span>
-                </li>
-              ))}
-            </ul>
-            <button className={`btn ${p.featured?"":"btn--ghost"}`} style={{width:"100%",justifyContent:"center",marginTop:"auto"}}>{p.cta} <span className="arr">↗</span></button>
-          </div>
-        ))}
-      </div>
-      <div className="price__foot rv d2">
-        <span className="eyebrow"><span className="pip" /> ALL PHASES</span>
-        <span>Senior team only · Signed NDA · 30-day parallel support · Exit with runbook</span>
-        <a href="#contact" className="price__more">See full scope sheet <span>↗</span></a>
-      </div>
-    </section>
-  );
-}
-
-function TestimonialsSection() {
-  const cards = [
-    {q:<>They embedded with our team and shipped what we&apos;d been <em>circling for a year</em> — in eight weeks. The product hasn&apos;t been the same since.</>,n:"Mara V.",r:"Co-founder · AI SaaS Platform",a:"M"},
-    {q:<>The most operationally honest studio I have worked with. They will <em>tell you no</em>, and they will tell you why.</>,n:"Ade O.",r:"CTO · Growth Engine",a:"A"},
-    {q:<>Three months in we hit numbers our board didn&apos;t believe were possible. We <em>extended the engagement</em> twice.</>,n:"Iris K.",r:"VP Product · Clinic Pulse",a:"I"},
-  ];
-  return (
-    <section className="sec s-wrap testi">
-      <div className="sec-hd rv">
-        <div className="sec-hd__l">
-          <span className="eyebrow"><span className="pip" /> 06 · TESTIMONIALS</span>
-          <h2 className="h-2">In their<br /><span className="serif">own words.</span></h2>
-        </div>
-        <div />
-        <div className="sec-hd__r"><p>Three quotes pulled with permission from operators who have shipped with us in the last twenty-four months.</p></div>
-      </div>
-      <div className="testi__grid">
-        {cards.map((c,i) => (
-          <div key={i} className={`testi__c rv d${i+1}`}>
-            <p className="testi__q">{c.q}</p>
-            <div className="testi__who">
-              <span className="testi__av">{c.a}</span>
-              <div><div className="n">{c.n}</div><div className="r">{c.r}</div></div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
 function FaqSection() {
   const items = [
     {n:"01",q:"What does ZeitForge do?",a:"We are a design and development studio for SaaS companies. We design, build, and scale digital products — from product strategy and UI/UX through engineering, automation, and AI workflows — under a single accountable team."},
     {n:"02",q:"Can you build MVPs?",a:"Yes — MVP is our most common engagement. We ship a launched, production-grade product in eight weeks with a senior team embedded against your codebase, exiting with the operator who will own it post-launch."},
-    {n:"03",q:"What is your pricing structure?",a:"Fixed-fee phases, not hourly billing. Sprints run $24k for three weeks, MVPs $98k for eight weeks, and Scale engagements start at $42k per month. Full scope sheet shared on the discovery call."},
-    {n:"04",q:"What makes ZeitForge different?",a:"A senior bench (no juniors fronting client work), engagements taken only on referral, and an exit checklist that includes a runbook and a trained operator — not just a deployed product."},
-    {n:"05",q:"Do you provide ongoing support?",a:"Every engagement includes a 30-day parallel period after launch at no charge. Beyond that, teams can take a quarterly retainer for platform decisions, hiring input, and the next round of feature work."},
+    {n:"03",q:"What makes ZeitForge different?",a:"A senior bench (no juniors fronting client work), engagements taken only on referral, and an exit checklist that includes a runbook and a trained operator — not just a deployed product."},
+    {n:"04",q:"Do you provide ongoing support?",a:"Every engagement includes a 30-day parallel period after launch at no charge. Beyond that, teams can take a quarterly retainer for platform decisions, hiring input, and the next round of feature work."},
   ];
   const [open, setOpen] = useState(0);
   return (
@@ -645,7 +562,7 @@ function Footer() {
         </div>
         <div className="ftr__col"><h5>SERVICES</h5><ul><li>SaaS Product Design</li><li>MVP Development</li><li>UI/UX Design</li><li>Automation &amp; AI Workflows</li></ul></div>
         <div className="ftr__col"><h5>STUDIO</h5><ul><li>About</li><li>Projects</li><li>Field notes</li><li>Careers · invitational</li></ul></div>
-        <div className="ftr__col"><h5>CONTACT</h5><ul><li>hello@zeitforge.studio</li><li>London · Berlin · NYC</li><li>+44 20 4566 0119</li><li>Book a call</li></ul></div>
+        <div className="ftr__col"><h5>CONTACT</h5><ul><li>hello@zeitforge.studio</li><li>Remote-first · Serving SaaS teams globally</li><li>Book a call</li></ul></div>
         <div className="ftr__bar">
           <span>© ZeitForge Product Studio · MMXXVI</span>
           <span><span className="dot live" /> AVAILABLE · Q3 ROSTER · 2 SLOTS</span>
@@ -676,8 +593,6 @@ export default function Home() {
         <AboutSection />
         <ServicesSection />
         <WorkSection />
-        <PricingSection />
-        <TestimonialsSection />
         <FaqSection />
         <FinalCtaSection />
         <Footer />

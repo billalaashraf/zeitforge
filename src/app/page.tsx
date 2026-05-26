@@ -372,7 +372,7 @@ function AboutSection() {
           <span className="eyebrow"><span className="pip" /> 02 · ABOUT OUR STUDIO</span>
           <h2 className="h-2">Designing scalable<br />SaaS products that<br />help companies <span className="serif">stand out.</span></h2>
         </div>
-        <div />
+        <div className="sec-hd__gap" />
         <div className="sec-hd__r"><p>Closed engagements, embedded teams, ten-year operating discipline.</p></div>
       </div>
       <div className="about__grid">
@@ -416,7 +416,7 @@ function ServicesSection() {
           <span className="eyebrow"><span className="pip" /> 03 · SERVICES</span>
           <h2 className="h-2">Four capabilities,<br />one connected <span className="serif">surface.</span></h2>
         </div>
-        <div />
+        <div className="sec-hd__gap" />
         <div className="sec-hd__r"><p>Services compose. Most engagements pull from three of these at once — we do not bill them as separate retainers.</p></div>
       </div>
       <div className="svc__grid svc__grid--4">
@@ -456,7 +456,7 @@ function WorkSection() {
           <span className="eyebrow"><span className="pip" /> 04 · RECENT PROJECTS</span>
           <h2 className="h-2">Products we<br />didn&apos;t just<br /><span className="serif">design.</span> We shipped.</h2>
         </div>
-        <div />
+        <div className="sec-hd__gap" />
         <div className="sec-hd__r"><p>Four engagements from the last twenty-four months. Names changed where the work is still in stealth.</p></div>
       </div>
       <div className="work__grid">
@@ -505,7 +505,7 @@ function FaqSection() {
           <span className="eyebrow"><span className="pip" /> 05 · FAQs</span>
           <h2 className="h-2">Common<br /><span className="serif">questions.</span></h2>
         </div>
-        <div />
+        <div className="sec-hd__gap" />
         <div className="sec-hd__r"><p>Four of the most-asked. Everything else is on the discovery call.</p></div>
       </div>
       <div className="faq__grid">

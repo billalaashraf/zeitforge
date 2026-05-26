@@ -273,7 +273,6 @@ function Header() {
           <a className="hdr__link" href="#work">Projects</a>
         </nav>
         <div className="hdr__right">
-          <span className="eyebrow"><span className="dot live" /> AVAILABLE · Q3</span>
           <a href="#contact" className="btn btn--lg">Get Started <span className="arr">↗</span></a>
         </div>
       </div>
@@ -565,7 +564,6 @@ function Footer() {
         <div className="ftr__col"><h5>CONTACT</h5><ul><li>hello@zeitforge.studio</li><li>Remote-first · Serving SaaS teams globally</li><li><a href="#contact">Book a call</a></li></ul></div>
         <div className="ftr__bar">
           <span>© ZeitForge Product Studio · MMXXVI</span>
-          <span><span className="dot live" /> AVAILABLE · Q3 ROSTER · 2 SLOTS</span>
           <span>hello@zeitforge.studio</span>
         </div>
       </div>

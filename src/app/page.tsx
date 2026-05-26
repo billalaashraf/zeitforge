@@ -274,7 +274,7 @@ function Header() {
         </nav>
         <div className="hdr__right">
           <span className="eyebrow"><span className="dot live" /> AVAILABLE · Q3</span>
-          <button className="btn btn--lg">Get Started <span className="arr">↗</span></button>
+          <a href="#contact" className="btn btn--lg">Get Started <span className="arr">↗</span></a>
         </div>
       </div>
     </header>
@@ -293,8 +293,8 @@ function HeroSection() {
           <h1 className="hero__h1 rv">Partner with a<br />product studio<br />built for SaaS <em>growth.</em></h1>
           <p className="hero__sub rv d1">We help SaaS companies design, build, and scale digital products with sharp strategy, clean interfaces, automation, and reliable development.</p>
           <div className="hero__cta rv d2">
-            <button className="btn btn--lg">Get Started <span className="arr">↗</span></button>
-            <button className="btn btn--ghost btn--lg">View Projects <span className="arr">↗</span></button>
+            <a href="#contact" className="btn btn--lg">Get Started <span className="arr">↗</span></a>
+            <a href="#work" className="btn btn--ghost btn--lg">View Projects <span className="arr">↗</span></a>
           </div>
           <div className="hero__meta rv d3">
             <div className="hero__meta-item"><span className="k">Shipped</span><span className="v">20<em>+</em></span></div>
@@ -380,14 +380,14 @@ function AboutSection() {
           <p className="text-body-lg">We combine product strategy, design, development, and automation to create software experiences that look polished, perform fast, and support real business growth.</p>
           <p className="text-body">Our work is taken on referral. We embed alongside in-house teams, ship into the same codebase under the same standards, and exit with a runbook, a paved path, and operators trained to run the product for the next order of magnitude.</p>
           <div style={{display:"flex",gap:12,alignItems:"center",marginTop:18}}>
-            <button className="btn">Meet the studio <span className="arr">↗</span></button>
+            <a href="#contact" className="btn">Meet the studio <span className="arr">↗</span></a>
             <span className="eyebrow">14 yrs · 24 operators · remote-first</span>
           </div>
         </div>
         <div className="about__stats about__stats--3 rv d2">
           {[
             {v:<>20<em>+</em></>,l:"Projects Completed",d:"Across SaaS, fintech, healthcare, and growth-stage AI."},
-            {v:<>12<em>+</em></>,l:"Years Experience",d:"A senior bench. No juniors fronting client work."},
+            {v:<>14<em>+</em></>,l:"Years Experience",d:"A senior bench. No juniors fronting client work."},
             {v:<>95<em>%</em></>,l:"Client Satisfaction",d:"Measured at exit + 90 days. We retain to fix any gap."},
           ].map((s,i) => (
             <div key={i} className="stat">
@@ -480,7 +480,7 @@ function WorkSection() {
                   </div>
                 ))}
               </div>
-              <a href="#" className="proj__cta">View Case Study <span className="arr">→</span></a>
+              <span className="proj__cta">View Case Study <span className="arr">→</span></span>
             </div>
             <div className="proj__vis"><p.Viz /></div>
           </article>
@@ -502,17 +502,17 @@ function FaqSection() {
     <section className="sec s-wrap" id="faq">
       <div className="sec-hd rv">
         <div className="sec-hd__l">
-          <span className="eyebrow"><span className="pip" /> 07 · FAQs</span>
+          <span className="eyebrow"><span className="pip" /> 05 · FAQs</span>
           <h2 className="h-2">Common<br /><span className="serif">questions.</span></h2>
         </div>
         <div />
-        <div className="sec-hd__r"><p>Five of the most-asked. Everything else is on the discovery call.</p></div>
+        <div className="sec-hd__r"><p>Four of the most-asked. Everything else is on the discovery call.</p></div>
       </div>
       <div className="faq__grid">
         <div className="rv d1">
           <h3 className="h-3">Direct answers,<br /><span className="serif">no hedging.</span></h3>
           <p className="text-body" style={{marginTop:20}}>We take a small number of engagements per year and prefer to be candid about scope and price before the first call. If a question isn&apos;t covered here, ask it on the call — we&apos;ll answer the same way.</p>
-          <button className="btn" style={{marginTop:24}}>Ask a question <span className="arr">↗</span></button>
+          <a href="#contact" className="btn" style={{marginTop:24}}>Ask a question <span className="arr">↗</span></a>
         </div>
         <div className="faq__list rv d2">
           {items.map((it,i) => (
@@ -562,11 +562,11 @@ function Footer() {
         </div>
         <div className="ftr__col"><h5>SERVICES</h5><ul><li>SaaS Product Design</li><li>MVP Development</li><li>UI/UX Design</li><li>Automation &amp; AI Workflows</li></ul></div>
         <div className="ftr__col"><h5>STUDIO</h5><ul><li>About</li><li>Projects</li><li>Field notes</li><li>Careers · invitational</li></ul></div>
-        <div className="ftr__col"><h5>CONTACT</h5><ul><li>hello@zeitforge.studio</li><li>Remote-first · Serving SaaS teams globally</li><li>Book a call</li></ul></div>
+        <div className="ftr__col"><h5>CONTACT</h5><ul><li>hello@zeitforge.studio</li><li>Remote-first · Serving SaaS teams globally</li><li><a href="#contact">Book a call</a></li></ul></div>
         <div className="ftr__bar">
           <span>© ZeitForge Product Studio · MMXXVI</span>
           <span><span className="dot live" /> AVAILABLE · Q3 ROSTER · 2 SLOTS</span>
-          <span>v 7.2 · Last update May 2026</span>
+          <span>hello@zeitforge.studio</span>
         </div>
       </div>
     </footer>

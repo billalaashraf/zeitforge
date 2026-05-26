@@ -348,7 +348,6 @@ function TrustedSection() {
       <div className="trust__head">
         <span className="eyebrow"><span className="pip" /> TRUSTED BY</span>
         <div className="trust__line" />
-        <span style={{fontFamily:"var(--mono)",fontSize:11.5,letterSpacing:"0.18em",color:"var(--fog)"}}>Closed roster · referral led · 2019—present</span>
       </div>
       <div className="trust__marquee">
         <div className="trust__track">

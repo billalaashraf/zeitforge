@@ -17,67 +17,6 @@ function MarkBrand({ size = 22 }: { size?: number }) {
   );
 }
 
-function VizBars() {
-  const heights = [42, 64, 38, 78, 56, 92, 70];
-  return (
-    <div className="hv-bars">
-      {heights.map((h, i) => (
-        <div key={i} className={`b ${i !== 2 && i !== 6 ? "alt" : ""}`} style={{ height: `${h}%` }} />
-      ))}
-    </div>
-  );
-}
-
-function VizSpark() {
-  const pts: [number, number][] = [[0,60],[30,55],[60,58],[90,42],[120,46],[150,30],[180,34],[210,18],[240,22],[270,8]];
-  const d = "M " + pts.map(p => p.join(" ")).join(" L ");
-  const a = d + " L 270 80 L 0 80 Z";
-  return (
-    <svg viewBox="0 0 280 80" preserveAspectRatio="none" className="hv-spark">
-      <defs>
-        <linearGradient id="sp-fill" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" style={{ stopColor: "var(--brass)" }} stopOpacity="0.4" />
-          <stop offset="100%" style={{ stopColor: "var(--brass)" }} stopOpacity="0" />
-        </linearGradient>
-      </defs>
-      {[20,40,60].map(y => <line key={y} x1="0" y1={y} x2="280" y2={y} stroke="var(--hairline)" strokeDasharray="2 4" />)}
-      <path d={a} fill="url(#sp-fill)" />
-      <path d={d} fill="none" stroke="var(--brass)" strokeWidth="1.6" />
-      {pts.map(([x,y],i) => i === pts.length-1 ? (
-        <g key={i}>
-          <circle cx={x} cy={y} r="6" fill="var(--brass)" opacity="0.18" />
-          <circle cx={x} cy={y} r="3" fill="var(--brass-bright)" />
-        </g>
-      ) : null)}
-    </svg>
-  );
-}
-
-function VizFlow() {
-  const nodes = [{x:20,y:48,l:"TRIGGER"},{x:108,y:24,l:"ENRICH"},{x:108,y:72,l:"CHECK"},{x:196,y:48,l:"ACTION"}];
-  return (
-    <svg viewBox="0 0 280 96" preserveAspectRatio="xMidYMid meet" className="hv-flow-svg" style={{width:"100%",height:"100%"}}>
-      <defs>
-        <marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-          <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--brass)" />
-        </marker>
-      </defs>
-      {nodes.map((n,i) => (
-        <g key={i}>
-          <rect x={n.x-22} y={n.y-12} width="44" height="24" rx="8" fill="var(--ember)" stroke="var(--hairline-strong)" />
-          <text x={n.x} y={n.y+3.5} textAnchor="middle" fontFamily="JetBrains Mono" fontSize="9" letterSpacing="1" fill="var(--paper)">{n.l}</text>
-        </g>
-      ))}
-      <path d="M 42 44 Q 70 26, 86 26" stroke="var(--brass)" strokeWidth="1" fill="none" markerEnd="url(#ar)" />
-      <path d="M 42 52 Q 70 70, 86 72" stroke="var(--hairline-strong)" strokeWidth="1" fill="none" markerEnd="url(#ar)" />
-      <path d="M 130 26 Q 160 32, 174 44" stroke="var(--brass)" strokeWidth="1" fill="none" markerEnd="url(#ar)" />
-      <path d="M 130 72 Q 160 64, 174 52" stroke="var(--hairline-strong)" strokeWidth="1" fill="none" markerEnd="url(#ar)" />
-      <circle cx="240" cy="48" r="3" fill="var(--brass)">
-        <animate attributeName="r" values="3;5;3" dur="2.2s" repeatCount="indefinite" />
-      </circle>
-    </svg>
-  );
-}
 
 function ArtRings() {
   return (
@@ -315,38 +254,6 @@ function HeroSection() {
             <div className="hero__meta-item"><span className="k">Avg MVP</span><span className="v">8 wks</span></div>
             <span className="sep" />
             <div className="hero__meta-item"><span className="k">Satisfaction</span><span className="v">95%</span></div>
-          </div>
-        </div>
-        <div className="hero__col-r">
-          <div className="hero__vis">
-            <div className="hv-card hv-dash">
-              <div className="hd"><span className="ttl">Product · MRR Pulse</span><span className="tag acc">● LIVE</span></div>
-              <VizBars />
-              <div className="hv-stat-row">
-                <div className="hv-stat"><div className="l">MRR</div><div className="v">$182<em>K</em></div></div>
-                <div className="hv-stat"><div className="l">Growth</div><div className="v">+24%</div></div>
-                <div className="hv-stat"><div className="l">Trial → Paid</div><div className="v">38%</div></div>
-              </div>
-            </div>
-            <div className="hv-card hv-growth">
-              <div className="hd"><span className="ttl">Growth · 90d</span><span className="tag">FORECAST</span></div>
-              <VizSpark />
-              <div className="hd"><span className="tag">Q3 PROJ</span><span className="tag acc">+ 2.4×</span></div>
-            </div>
-            <div className="hv-card hv-flow">
-              <div className="hd"><span className="ttl">Automation · Loop 04</span><span className="tag acc">● ACTIVE</span></div>
-              <VizFlow />
-              <div className="hd"><span className="tag">SAVED · 1,420 h / mo</span><span className="tag">RUNS · 41K</span></div>
-            </div>
-            <div className="hv-card hv-code">
-              <div className="ln"><span className="n">01</span><span><span className="c">{"// zf · forge pipeline"}</span></span></div>
-              <div className="ln"><span className="n">02</span><span><span className="k">export const</span> forge = <span className="k">async</span> ({"{"}product{"}"}) <span className="k">{"=>"}</span> {"{"}</span></div>
-              <div className="ln"><span className="n">03</span><span>{"  "}<span className="k">await</span> design.system(product, <span className="s">&quot;v2&quot;</span>);</span></div>
-              <div className="ln"><span className="n">04</span><span>{"  "}<span className="k">await</span> build.platform({"{"} flags: [<span className="s">&quot;growth&quot;</span>] {"}"});</span></div>
-              <div className="ln"><span className="n">05</span><span>{"  "}<span className="k">return</span> launch();{"   "}<span className="c">{"// ↳ 8w mvp"}</span></span></div>
-              <div className="ln"><span className="n">06</span><span>{"}"};  </span></div>
-            </div>
-            <div className="hv-floater"><span className="dot live" /><span>BUILD · ZF-OS 7.2.4</span></div>
           </div>
         </div>
       </div>

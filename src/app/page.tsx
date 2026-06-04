@@ -667,7 +667,6 @@ export default function Home() {
     const sparks: Spark[] = [];
     const embers: Ember[] = [];
     let nextFW  = performance.now() + 800 + Math.random()*1800;
-    let shakeEnd = 0, shakeMag = 0;
 
     const firework = () => {
       const fx = W*(.05+Math.random()*.9);
@@ -679,8 +678,6 @@ export default function Home() {
         sparks.push({ x:fx,y:fy,px:fx,py:fy, vx:Math.cos(a)*s, vy:Math.sin(a)*s, life:0, max:500+Math.random()*550 });
       }
       embers.push({ x:fx, y:fy, life:0, max:220, size:70+Math.random()*40 });
-      shakeEnd = performance.now()+260;
-      shakeMag = 7+Math.random()*6;
     };
 
     let raf  = 0;
@@ -742,15 +739,6 @@ export default function Home() {
         ctx.fillStyle=`rgba(255,235,195,${a.toFixed(3)})`;
         ctx.beginPath(); ctx.arc(s.x,s.y,1.4,0,Math.PI*2); ctx.fill();
       }
-
-      // Camera shake on canvas only (not page content)
-      let shake = "";
-      if (now<shakeEnd) {
-        const prog=Math.max(0,(shakeEnd-now)/260), m=shakeMag*prog;
-        const dx=(Math.random()-.5)*m*2, dy=(Math.random()-.5)*m*2;
-        shake=`translate3d(${dx.toFixed(2)}px,${dy.toFixed(2)}px,0)`;
-      }
-      if (canvas.style.transform!==shake) canvas.style.transform=shake;
 
       raf=requestAnimationFrame(loop);
     };

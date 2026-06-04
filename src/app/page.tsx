@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 function MarkBrand({ size = 22 }: { size?: number }) {
   const id = `zf-cut-${size}`;
@@ -262,6 +262,20 @@ function ProjOps() {
   );
 }
 
+function ZeitForgeHeroSection() {
+  return (
+    <section className="zf-hero" id="top">
+      <div>
+        <h1 className="zf-hero__wordmark">
+          <span className="zf-ac">Z</span>eit<span className="zf-ac">F</span>orge
+        </h1>
+        <p className="zf-hero__sub">Design &amp; Development Studio</p>
+      </div>
+      <span className="zf-hero__cue" aria-hidden="true">Scroll</span>
+    </section>
+  );
+}
+
 function Header() {
   return (
     <header className="hdr">
@@ -282,20 +296,20 @@ function Header() {
 
 function HeroSection() {
   return (
-    <section className="hero s-wrap" id="top">
+    <section className="hero s-wrap" id="studio">
       <div className="hero__grid">
         <div className="hero__col-l">
           <div className="hero__cap">
             <span className="pill"><span className="dot" /> DESIGN &amp; DEVELOPMENT STUDIO</span>
             <span className="eyebrow">Remote-first · Global</span>
           </div>
-          <h1 className="hero__h1 rv">Partner with a<br />product studio<br />built for SaaS <em>growth.</em></h1>
-          <p className="hero__sub rv d1">We help SaaS companies design, build, and scale digital products with sharp strategy, clean interfaces, automation, and reliable development.</p>
-          <div className="hero__cta rv d2">
+          <h1 className="hero__h1">Partner with a<br />product studio<br />built for SaaS <em>growth.</em></h1>
+          <p className="hero__sub">We help SaaS companies design, build, and scale digital products with sharp strategy, clean interfaces, automation, and reliable development.</p>
+          <div className="hero__cta">
             <a href="#contact" className="btn btn--lg">Get Started <span className="arr">↗</span></a>
             <a href="#work" className="btn btn--ghost btn--lg">View Projects <span className="arr">↗</span></a>
           </div>
-          <div className="hero__meta rv d3">
+          <div className="hero__meta">
             <div className="hero__meta-item"><span className="k">Shipped</span><span className="v">20<em>+</em></span></div>
             <span className="sep" />
             <div className="hero__meta-item"><span className="k">Avg MVP</span><span className="v">8 wks</span></div>
@@ -303,7 +317,7 @@ function HeroSection() {
             <div className="hero__meta-item"><span className="k">Satisfaction</span><span className="v">95%</span></div>
           </div>
         </div>
-        <div className="hero__col-r rv d2">
+        <div className="hero__col-r">
           <div className="hero__vis">
             <div className="hv-card hv-dash">
               <div className="hd"><span className="ttl">Product · MRR Pulse</span><span className="tag acc">● LIVE</span></div>
@@ -399,11 +413,38 @@ function AboutSection() {
 }
 
 function ServicesSection() {
+  const cardIcons = [
+    <svg key="01" width="22" height="22" viewBox="0 0 22 22" fill="none">
+      <path d="M5 15.5L13.5 7L16 9.5L7.5 18H5V15.5Z" stroke="var(--brass-bright)" strokeWidth="1.4" strokeLinejoin="round"/>
+      <path d="M11.5 8.5L14.5 11.5" stroke="var(--brass-bright)" strokeWidth="1.4"/>
+      <circle cx="17" cy="6" r="1.8" fill="var(--brass-bright)"/>
+    </svg>,
+    <svg key="02" width="22" height="22" viewBox="0 0 22 22" fill="none">
+      <polyline points="7.5,7.5 3.5,11 7.5,14.5" stroke="var(--brass-bright)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+      <polyline points="14.5,7.5 18.5,11 14.5,14.5" stroke="var(--brass-bright)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+      <line x1="13" y1="6" x2="9" y2="16" stroke="var(--brass-bright)" strokeWidth="1.4" strokeLinecap="round"/>
+    </svg>,
+    <svg key="03" width="22" height="22" viewBox="0 0 22 22" fill="none">
+      <rect x="3" y="3" width="16" height="10" rx="2" stroke="var(--brass-bright)" strokeWidth="1.4"/>
+      <rect x="3" y="15.5" width="7" height="3.5" rx="1.5" fill="var(--brass-bright)" opacity="0.7"/>
+      <rect x="12" y="15.5" width="7" height="3.5" rx="1.5" stroke="var(--brass-bright)" strokeWidth="1.2"/>
+    </svg>,
+    <svg key="04" width="22" height="22" viewBox="0 0 22 22" fill="none">
+      <circle cx="4" cy="11" r="2" stroke="var(--brass-bright)" strokeWidth="1.4"/>
+      <circle cx="11" cy="4.5" r="2" stroke="var(--brass-bright)" strokeWidth="1.4"/>
+      <circle cx="11" cy="17.5" r="2" stroke="var(--brass-bright)" strokeWidth="1.4"/>
+      <circle cx="18" cy="11" r="2" fill="var(--brass-bright)"/>
+      <line x1="5.8" y1="9.8" x2="9.2" y2="6.2" stroke="var(--brass-bright)" strokeWidth="1.1"/>
+      <line x1="5.8" y1="12.2" x2="9.2" y2="15.8" stroke="var(--brass-bright)" strokeWidth="1.1"/>
+      <line x1="12.8" y1="6.2" x2="16.2" y2="9.8" stroke="var(--brass-bright)" strokeWidth="1.1"/>
+      <line x1="12.8" y1="15.8" x2="16.2" y2="12.2" stroke="var(--brass-bright)" strokeWidth="1.1"/>
+    </svg>,
+  ];
   const cards = [
-    {n:"01",t:<>SaaS Product <em>Design</em></>,d:"End-to-end product design — from problem framing to a launched, instrumented interface ready for ten times the users.",Art:ArtRings},
-    {n:"02",t:<>MVP <em>Development</em></>,d:"From whiteboard to a launched product in eight weeks. One sprint, one team, one accountable senior on the codebase.",Art:ArtBezier},
-    {n:"03",t:<>UI/UX <em>Design</em></>,d:"Design systems and interfaces that hold up at scale — component libraries, motion, accessibility, dark + light pairs.",Art:ArtGrid},
-    {n:"04",t:<>Automation &amp; <em>AI Workflows</em></>,d:"Operational pipelines, internal copilots, RAG and evaluation in production — wired into the product, not bolted on.",Art:ArtCross},
+    {n:"01",t:<>SaaS Product <em>Design</em></>,d:"End-to-end product design — from problem framing to a launched, instrumented interface ready for ten times the users.",Art:ArtRings,href:"/services/product-design"},
+    {n:"02",t:<>MVP <em>Development</em></>,d:"From whiteboard to a launched product in eight weeks. One sprint, one team, one accountable senior on the codebase.",Art:ArtBezier,href:"/services/mvp-development"},
+    {n:"03",t:<>UI/UX <em>Design</em></>,d:"Design systems and interfaces that hold up at scale — component libraries, motion, accessibility, dark + light pairs.",Art:ArtGrid,href:"/services/ui-ux-systems"},
+    {n:"04",t:<>Automation &amp; <em>AI Workflows</em></>,d:"Operational pipelines, internal copilots, RAG and evaluation in production — wired into the product, not bolted on.",Art:ArtCross,href:"/services/automation-ai"},
   ];
   return (
     <section className="sec svc s-wrap" id="services">
@@ -417,21 +458,16 @@ function ServicesSection() {
       </div>
       <div className="svc__grid svc__grid--4">
         {cards.map((c,i) => (
-          <div key={c.n} className={`svc__card rv d${(i%4)+1}`}>
+          <a key={c.n} href={c.href} className={`svc__card rv d${(i%4)+1}`}>
             <div className="svc__head">
               <span className="svc__num">{c.n} · SERVICE</span>
-              <div className="svc__pic">
-                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-                  <rect x="3" y="3" width="16" height="16" rx="3" stroke="var(--brass-bright)" strokeWidth="1.5" />
-                  <circle cx="11" cy="11" r="3" fill="var(--brass-bright)" />
-                </svg>
-              </div>
+              <div className="svc__pic">{cardIcons[i]}</div>
             </div>
             <h3 className="svc__title">{c.t}</h3>
             <p className="svc__desc">{c.d}</p>
             <span className="svc__arr">Learn more <span>↗</span></span>
             <c.Art />
-          </div>
+          </a>
         ))}
       </div>
     </section>
@@ -440,10 +476,10 @@ function ServicesSection() {
 
 function WorkSection() {
   const projects = [
-    {id:"01",k:"FEATURED · 2025",tags:["AI SaaS","Inference","Series B"],title:<>AI SaaS <em>Platform</em></>,line:"Stood up the inference, retrieval and guardrail platforms behind a regulated AI product used by fourteen of the world's largest insurers.",metrics:[["Queries / day","8.4M"],["Models","31"],["Cost",<>−41<em>%</em></>]],Viz:ProjAI},
-    {id:"02",k:"FEATURED · 2024",tags:["Healthcare","Dashboard","Automation"],title:<>Clinic <em>Pulse</em></>,line:"Replaced a fragile clinic-management spreadsheet stack with a unified dashboard that automates scheduling, no-show recovery, and revenue ops across 14 sites.",metrics:[["Automation","71%"],["No-show",<>−62<em>%</em></>],["Hours saved / mo","1,420"]],Viz:ProjClinic},
-    {id:"03",k:"FEATURED · 2024",tags:["E-commerce","Growth","Conversion"],title:<>E-commerce <em>Growth Engine</em></>,line:"Designed and shipped a growth engine — funnel instrumentation, experimentation, pricing — that compounded revenue 2.4× in 90 days.",metrics:[["Revenue",<>2.4<em>×</em></>],["CVR",<>+38<em>%</em></>],["AOV",<>+22<em>%</em></>]],Viz:ProjEcom},
-    {id:"04",k:"FEATURED · 2025",tags:["Operations","Internal Platform","Logistics"],title:<>Operations <em>Dashboard</em></>,line:"Built a single operations surface for a 220-person logistics business — fleet, finance and field ops on one canvas, replacing seven separate tools.",metrics:[["Tools replaced","7"],["On-time delivery",<>+18<em>pp</em></>],["Toil saved / wk","640 h"]],Viz:ProjOps},
+    {id:"01",k:"FEATURED · 2025",tags:["AI SaaS","Inference","Series B"],title:<>AI SaaS <em>Platform</em></>,line:"Stood up the inference, retrieval and guardrail platforms behind a regulated AI product used by fourteen of the world's largest insurers.",metrics:[["Queries / day","8.4M"],["Models","31"],["Cost",<>−41<em>%</em></>]],Viz:ProjAI,href:"/work/ai-saas-platform"},
+    {id:"02",k:"FEATURED · 2024",tags:["Healthcare","Dashboard","Automation"],title:<>Clinic <em>Pulse</em></>,line:"Replaced a fragile clinic-management spreadsheet stack with a unified dashboard that automates scheduling, no-show recovery, and revenue ops across 14 sites.",metrics:[["Automation","71%"],["No-show",<>−62<em>%</em></>],["Hours saved / mo","1,420"]],Viz:ProjClinic,href:"/work/clinic-pulse"},
+    {id:"03",k:"FEATURED · 2024",tags:["E-commerce","Growth","Conversion"],title:<>E-commerce <em>Growth Engine</em></>,line:"Designed and shipped a growth engine — funnel instrumentation, experimentation, pricing — that compounded revenue 2.4× in 90 days.",metrics:[["Revenue",<>2.4<em>×</em></>],["CVR",<>+38<em>%</em></>],["AOV",<>+22<em>%</em></>]],Viz:ProjEcom,href:"/work/ecommerce-growth"},
+    {id:"04",k:"FEATURED · 2025",tags:["Operations","Internal Platform","Logistics"],title:<>Operations <em>Dashboard</em></>,line:"Built a single operations surface for a 220-person logistics business — fleet, finance and field ops on one canvas, replacing seven separate tools.",metrics:[["Tools replaced","7"],["On-time delivery",<>+18<em>pp</em></>],["Toil saved / wk","640 h"]],Viz:ProjOps,href:"/work/operations-dashboard"},
   ];
   return (
     <section className="sec s-wrap" id="work">
@@ -476,7 +512,7 @@ function WorkSection() {
                   </div>
                 ))}
               </div>
-              <span className="proj__cta">View Case Study <span className="arr">→</span></span>
+              <a href={p.href} className="proj__cta">View Case Study <span className="arr">→</span></a>
             </div>
             <div className="proj__vis"><p.Viz /></div>
           </article>
@@ -569,6 +605,160 @@ function Footer() {
 }
 
 export default function Home() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  // Navbar scroll opacity
+  useEffect(() => {
+    const inner = document.querySelector<HTMLDivElement>(".hdr__inner");
+    if (!inner) return;
+    inner.style.transition = "background .35s ease";
+    const onScroll = () => {
+      inner.style.background = window.scrollY > 20
+        ? "rgba(12,16,24,.92)"
+        : "rgba(12,16,24,.65)";
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      inner.style.transition = "";
+      inner.style.background = "";
+    };
+  }, []);
+
+  // Canvas particle system (ash + amber + fireworks)
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d")!;
+
+    // Pre-render 48×48 amber glow sprite
+    const sprite = document.createElement("canvas");
+    sprite.width = sprite.height = 48;
+    const sc = sprite.getContext("2d")!;
+    const sg = sc.createRadialGradient(24, 24, 0, 24, 24, 24);
+    sg.addColorStop(0,    "rgba(255,205,130,1)");
+    sg.addColorStop(0.25, "rgba(255,130,50,0.7)");
+    sg.addColorStop(0.6,  "rgba(190,60,20,0.28)");
+    sg.addColorStop(1,    "rgba(190,60,20,0)");
+    sc.fillStyle = sg;
+    sc.fillRect(0, 0, 48, 48);
+
+    let W = window.innerWidth, H = window.innerHeight;
+    const resize = () => {
+      W = window.innerWidth; H = window.innerHeight;
+      canvas.width = W; canvas.height = H;
+      canvas.style.width  = W + "px";
+      canvas.style.height = H + "px";
+    };
+    resize();
+    window.addEventListener("resize", resize);
+
+    type P     = { x:number; y:number; vx:number; vy:number; r:number; life:number; max:number; kind:"ash"|"amber"; phase:number };
+    type Spark = { x:number; y:number; px:number; py:number; vx:number; vy:number; life:number; max:number };
+    type Ember = { x:number; y:number; life:number; max:number; size:number };
+
+    const ash   = (init=false): P => ({ x:Math.random()*W, y:init?Math.random()*H:-20,   vx:(Math.random()-.5)*.3,    vy:.15+Math.random()*.45,  r:.5+Math.random()*1.8, life:0, max:14000+Math.random()*10000, kind:"ash",   phase:Math.random()*Math.PI*2 });
+    const amber = (init=false): P => ({ x:Math.random()*W, y:init?Math.random()*H:H+20,  vx:(Math.random()-.5)*.5,    vy:-(0.25+Math.random()*.75), r:.8+Math.random()*1.6, life:0, max:7000+Math.random()*7000,   kind:"amber", phase:Math.random()*Math.PI*2 });
+
+    const particles: P[] = [];
+    for (let i=0;i<90;i++) particles.push(ash(true));
+    for (let i=0;i<45;i++) particles.push(amber(true));
+
+    const sparks: Spark[] = [];
+    const embers: Ember[] = [];
+    let nextFW  = performance.now() + 800 + Math.random()*1800;
+    let shakeEnd = 0, shakeMag = 0;
+
+    const firework = () => {
+      const fx = W*(.05+Math.random()*.9);
+      const fy = H-(12+Math.random()*36);
+      const n  = 28+Math.floor(Math.random()*22);
+      for (let i=0;i<n;i++) {
+        const a = -Math.PI/2+(Math.random()-.5)*Math.PI*.95;
+        const s = 3.5+Math.random()*7.5;
+        sparks.push({ x:fx,y:fy,px:fx,py:fy, vx:Math.cos(a)*s, vy:Math.sin(a)*s, life:0, max:500+Math.random()*550 });
+      }
+      embers.push({ x:fx, y:fy, life:0, max:220, size:70+Math.random()*40 });
+      shakeEnd = performance.now()+260;
+      shakeMag = 7+Math.random()*6;
+    };
+
+    let raf  = 0;
+    let prev = performance.now();
+
+    const loop = (now: number) => {
+      const dt = Math.min(40, now-prev); prev = now;
+      ctx.clearRect(0, 0, W, H);
+
+      // Vignette
+      const vg = ctx.createRadialGradient(W/2,H/2,0,W/2,H/2,Math.max(W,H)*.7);
+      vg.addColorStop(0,"rgba(10,0,0,0)"); vg.addColorStop(1,"rgba(0,0,0,.5)");
+      ctx.fillStyle = vg; ctx.fillRect(0,0,W,H);
+
+      // Particles
+      for (let i=particles.length-1;i>=0;i--) {
+        const p = particles[i];
+        p.x += p.vx*(dt/16) + Math.sin(p.life/900+p.phase)*.18;
+        p.y += p.vy*(dt/16);
+        p.life += dt;
+        const t  = p.life/p.max;
+        const al = Math.sin(Math.PI*Math.min(1,t));
+        if (p.kind==="ash") {
+          ctx.fillStyle = `rgba(220,215,205,${(al*.22).toFixed(3)})`;
+          ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fill();
+        } else {
+          const r = p.r*9; ctx.globalAlpha = al*.9;
+          ctx.drawImage(sprite,p.x-r/2,p.y-r/2,r,r); ctx.globalAlpha = 1;
+        }
+        if (p.life>p.max||p.x<-40||p.x>W+40||p.y<-40||p.y>H+40)
+          particles[i] = p.kind==="ash" ? ash() : amber();
+      }
+
+      // Periodic fireworks
+      if (now>nextFW) { firework(); nextFW=now+2000+Math.random()*3500; }
+
+      // Ember glow
+      for (let i=embers.length-1;i>=0;i--) {
+        const e=embers[i]; e.life+=dt;
+        const t=e.life/e.max; if(t>=1){embers.splice(i,1);continue;}
+        const a=(1-t)*.85, r=e.size*(.4+t*.9);
+        const g=ctx.createRadialGradient(e.x,e.y,0,e.x,e.y,r);
+        g.addColorStop(0,`rgba(255,215,150,${a.toFixed(3)})`);
+        g.addColorStop(.4,`rgba(255,120,40,${(a*.55).toFixed(3)})`);
+        g.addColorStop(1,"rgba(220,70,20,0)");
+        ctx.fillStyle=g; ctx.fillRect(e.x-r,e.y-r,r*2,r*2);
+      }
+
+      // Sparks
+      ctx.lineCap="round";
+      for (let i=sparks.length-1;i>=0;i--) {
+        const s=sparks[i]; s.px=s.x; s.py=s.y;
+        s.x+=s.vx*(dt/16); s.y+=s.vy*(dt/16);
+        s.vy+=.14*(dt/16); s.vx*=.985; s.life+=dt;
+        const t=s.life/s.max; if(t>=1){sparks.splice(i,1);continue;}
+        const a=1-t;
+        ctx.strokeStyle=`rgba(255,195,110,${a.toFixed(3)})`; ctx.lineWidth=1.5;
+        ctx.beginPath(); ctx.moveTo(s.px,s.py); ctx.lineTo(s.x,s.y); ctx.stroke();
+        ctx.fillStyle=`rgba(255,235,195,${a.toFixed(3)})`;
+        ctx.beginPath(); ctx.arc(s.x,s.y,1.4,0,Math.PI*2); ctx.fill();
+      }
+
+      // Camera shake on canvas only (not page content)
+      let shake = "";
+      if (now<shakeEnd) {
+        const prog=Math.max(0,(shakeEnd-now)/260), m=shakeMag*prog;
+        const dx=(Math.random()-.5)*m*2, dy=(Math.random()-.5)*m*2;
+        shake=`translate3d(${dx.toFixed(2)}px,${dy.toFixed(2)}px,0)`;
+      }
+      if (canvas.style.transform!==shake) canvas.style.transform=shake;
+
+      raf=requestAnimationFrame(loop);
+    };
+    raf=requestAnimationFrame(loop);
+    return () => { cancelAnimationFrame(raf); window.removeEventListener("resize",resize); };
+  }, []);
+
+  // Scroll-reveal
   useEffect(() => {
     const obs = new IntersectionObserver(
       (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("in"); }),
@@ -580,9 +770,16 @@ export default function Home() {
 
   return (
     <>
+      <canvas
+        ref={canvasRef}
+        className="pointer-events-none fixed inset-0 mix-blend-screen"
+        style={{ zIndex: 5 }}
+        aria-hidden="true"
+      />
       <div className="s-bg" />
       <div className="s-page">
         <Header />
+        <ZeitForgeHeroSection />
         <HeroSection />
         <TrustedSection />
         <AboutSection />

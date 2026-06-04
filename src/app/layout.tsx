@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Instrument_Serif, JetBrains_Mono } from "next/font/google";
+import { UnifrakturCook, Instrument_Serif, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const bricolage = Bricolage_Grotesque({
+const unifraktur = UnifrakturCook({
   variable: "--font-display",
   subsets: ["latin"],
+  weight: "700",
   display: "swap",
 });
 
@@ -35,7 +36,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${bricolage.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable}`}
+      className={`${unifraktur.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable}`}
     >
       <body>{children}</body>
     </html>
